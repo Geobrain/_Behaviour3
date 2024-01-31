@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEngine.Serialization;
 
-  
-  [Serializable]
+
+[Serializable]
   public sealed class ComponentBehaviors
   {
-    public int www;
+    [FormerlySerializedAs("www")] public int test;
+    
+    public List<AbstractBehavior> behaviors = new (); // список поведений
+    public AbstractBehavior activeBehavior;
   }
 
   #region HELPERS
@@ -33,7 +38,7 @@ using System.Runtime.CompilerServices;
     public override void Dispose(Ent entity)
     {
       var component = Components[entity];
-      component.www = 0;
+      component.test = 0;
       Components.Remove(entity);
     }
   }

@@ -9,9 +9,13 @@ public class Player : Ent
     protected override void Setup()
     {
 
-        cBehaviors.www = 4;
-        // тут дата настроек для компонента cBehaviors - добавляем в него классы-поведения
+        cBehaviors.test = 4;
+        cBehaviors.behaviors.Add(new Player_inputQ());
+        cBehaviors.behaviors.Add(new Player_inputW());
         this.AddComponentBehaviors(cBehaviors);
+        ProcessorBehaviors.Inst.AddEntity(this);
+        
+        
     }
 
 }

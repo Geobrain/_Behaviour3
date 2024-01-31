@@ -12,21 +12,17 @@ public class NewBehaviourScript : MonoBehaviour
         player = new Player();
         
 
-        Debug.LogError($"   ура  {player.ComponentBehaviors().www} ");
-        
-        Debug.LogError($"    {StorageComponentBehaviors.Instance.Components}  ");
+        Debug.Log($" создан игрок. значение поля test  {player.ComponentBehaviors().test} ");
+
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             player.Destroy();
-
-            Debug.LogError($"    {StorageComponentBehaviors.Instance.Components}  ");
-            
 
         }
     }

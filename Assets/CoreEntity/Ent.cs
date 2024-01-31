@@ -13,6 +13,7 @@ public abstract class Ent : Object
 
     public virtual void Destroy()
     {
+        ProcessorBehaviors.Inst.RemoveEntity(this);
         this.DisposeComponents();
         Destroy(this);
     }
