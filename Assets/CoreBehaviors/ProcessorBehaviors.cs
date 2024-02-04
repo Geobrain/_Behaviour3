@@ -99,13 +99,13 @@ public class ProcessorBehaviors : MonoBehaviour
               break; 
             }
             
-            behavior.handleBehaviour = StartCoroutine(behavior.BehaviourEnumerator()); // запуск поведения
-            behavior.stateBehavior = BehaviorState.ScheduleBehaviour;
             cBehaviors.activeBehavior = behavior;
-            break;
+            behavior.stateBehavior = BehaviorState.ScheduleBehaviour;
+            behavior.PrepareWorkBehaviour();
+            goto case BehaviorState.ScheduleBehaviour;
 
           case BehaviorState.ScheduleBehaviour:
-            if (behavior.handleBehaviour != null)
+            if (behavior.IsRunBehaviour()) // проход по шагам работающего поведения
             {
               if (behavior.canTransitionToSelf && behavior.IsTrigger())
               {

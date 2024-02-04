@@ -23,7 +23,6 @@ public abstract class AbstractBehavior
   public Ent e; // носитель поведения
   public BehaviorState stateBehavior = BehaviorState.Off;
   public int indexBehavior; //индекс поведения в массиве всех поведений обьекта
-  public Coroutine handleBehaviour;
   
   public abstract void OnEnable();
   public abstract void SetBeh();
@@ -32,5 +31,6 @@ public abstract class AbstractBehavior
   public abstract bool SkipRuleBehaviour(Ent e); // способ уничтожения текущего поведения другим поведением с более высоким приоритетом
 
   public abstract bool IsTrigger();
-  public abstract IEnumerator BehaviourEnumerator();
+  public abstract void PrepareWorkBehaviour();
+  public abstract bool IsRunBehaviour();
 }

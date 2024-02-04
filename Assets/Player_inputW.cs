@@ -19,10 +19,7 @@ public partial class BehaviorName
 public class Player_inputW : Behavior<Player_inputW>, IOneStepBehavior
 {
   
-  public Player_inputW()
-  {
-    behaviorName = BehaviorName.Player_inputW;
-  }
+  public Player_inputW() : base(BehaviorName.Player_inputW) { }
   
   public override void SetBeh()
   {

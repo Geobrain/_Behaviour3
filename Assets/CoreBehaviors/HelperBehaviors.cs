@@ -33,10 +33,9 @@ public static class HelperBehaviors
   public static bool StopBehavior(this ComponentBehaviors cBehaviors, MonoBehaviour coroutineSource)
   {
     var activeBehavior = cBehaviors.activeBehavior;
-    if (activeBehavior.handleBehaviour != null)
-    {
-      coroutineSource.StopCoroutine(activeBehavior.handleBehaviour);
-    }
+    if (activeBehavior.stateBehavior != BehaviorState.ScheduleBehaviour)
+      return true;
+    
     activeBehavior.DisableBeh();
     activeBehavior.stateBehavior = activeBehavior.onceWork 
       ? BehaviorState.Off 

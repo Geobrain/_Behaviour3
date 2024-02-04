@@ -18,10 +18,7 @@ public partial class BehaviorName
 [CreateAssetMenu(fileName = "Player_inputQ", menuName = "Game/Behaviors/Player_inputQ")]
 public class Player_inputQ : Behavior<Player_inputQ>, IOneStepBehavior
 {
-  public Player_inputQ()
-  {
-    behaviorName = BehaviorName.Player_inputQ;
-  }
+  public Player_inputQ() : base(BehaviorName.Player_inputQ) { }
   
   public override void SetBeh()
   {

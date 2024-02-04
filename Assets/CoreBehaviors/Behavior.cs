@@ -9,18 +9,24 @@ public partial class BehaviorName
 }
 
 
-  public enum BehaviorState
-  {
-    Off,
-    ActiveTrigger,
-    TryScheduleBehaviour,
-    ScheduleBehaviour,
-  }
+public enum BehaviorState
+{
+  Off,
+  ActiveTrigger,
+  TryScheduleBehaviour,
+  ScheduleBehaviour,
+}
   
 public abstract class Behavior<T> : AbstractBehavior
 {
   private List<Func<bool>> behaviours = new List<Func<bool>>();
   private Behavior<T> InstanceInternal;
+  private int behaviorStep;
+  
+  public Behavior(string name)
+  {
+    behaviorName = name;
+  }
   
   public override void OnEnable() 
   {
@@ -64,19 +70,22 @@ public abstract class Behavior<T> : AbstractBehavior
     }
   }
 
-  public override IEnumerator BehaviourEnumerator()
+  public override void PrepareWorkBehaviour()
   {
-      
-    var step = 0;
+    behaviorStep = 0;
+  }
+
+  public override bool IsRunBehaviour()
+  {
     do
     {
-      if (behaviours[step].Invoke())
+      if (!behaviours[behaviorStep].Invoke())
       {
-        step++;
+        return true;
       }
-
-      yield return null;
-    } while (step <= behaviours.Count - 1);
+      behaviorStep++;
+    } while (behaviorStep <= behaviours.Count - 1);
+    return false;
   }
 
 }
