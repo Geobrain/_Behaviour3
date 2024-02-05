@@ -28,18 +28,13 @@ public abstract class ComponentStorage<T> : ComponentStorage
 
   protected ComponentStorage()
   {
-    Instance = this;
     if (!ComponentsStorage.ComponentStorage.Contains(Instance))
     {
       ComponentsStorage.ComponentStorage.Add(Instance);
     }
   }
 
-  public static void AddComponent(Action addComponent)
-  {
-    StorageComponentBehaviors.Instance ??= new StorageComponentBehaviors();
-    addComponent.Invoke();
-  }
+  public abstract T Create(Ent entity);
 
   /*
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -49,5 +44,5 @@ public abstract class ComponentStorage<T> : ComponentStorage
       ? components[entityID]
       : default;
   }*/
-  
+
 }

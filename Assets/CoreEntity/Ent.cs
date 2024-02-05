@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Ent : Object
+public abstract class Ent
 {
-    protected Ent()
-    {
-        Setup();
-    }
 
-    protected abstract void Setup();
+    public abstract void Setup(Ent ent);
 
     public virtual void Destroy()
     {
-        ProcessorBehaviors.Inst.RemoveEntity(this);
+        ProcessorBehaviors.Instance?.RemoveEntity(this);
         this.DisposeComponents();
-        Destroy(this);
+        //Destroy(this);
     }
 }
