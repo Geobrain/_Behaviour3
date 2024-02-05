@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Player : Ent
 {
-    private ComponentBehaviors cBehaviors = new ComponentBehaviors();
+    private ComponentBehaviors cBehaviors;
     
-    protected override void Setup()
-    {
-
+    protected override void Setup() {
+        cBehaviors = this.AddGetComponentBehaviors();
         cBehaviors.test = 4;
         cBehaviors.behaviors.Add(new Player_inputQ());
         cBehaviors.behaviors.Add(new Player_inputW());
-        this.AddComponentBehaviors(cBehaviors);
-        ProcessorBehaviors.Inst.AddEntity(this);
+        ProcessorBehaviors.Instance.AddEntity(this); 
+
         
         
     }

@@ -22,15 +22,15 @@ public static class HelperBehaviors
   }
   
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static bool TryHardStopActiveBehavior(this ComponentBehaviors cBehaviors, MonoBehaviour coroutineSource)
+  public static bool TryHardStopActiveBehavior(this ComponentBehaviors cBehaviors)
   {
     var activeBehavior = cBehaviors.activeBehavior;
     if (activeBehavior == null) return true; // можно запускать другое поведение
-    return activeBehavior.SkipRuleBehaviour(activeBehavior.e) && StopBehavior(cBehaviors, coroutineSource);
+    return activeBehavior.SkipRuleBehaviour(activeBehavior.e) && StopBehavior(cBehaviors);
   }
   
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public static bool StopBehavior(this ComponentBehaviors cBehaviors, MonoBehaviour coroutineSource)
+  public static bool StopBehavior(this ComponentBehaviors cBehaviors)
   {
     var activeBehavior = cBehaviors.activeBehavior;
     if (activeBehavior.stateBehavior != BehaviorState.ScheduleBehaviour)

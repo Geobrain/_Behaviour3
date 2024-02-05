@@ -7,11 +7,6 @@ public class Readmy : MonoBehaviour
     private Player player;
     
     /*todo
-     
-     
-перевести поведения на таги-названия - вернуть общие таги-названия
-
-
 
 убрать под капот добавление компонентов сущности и попадание поведений в процессор. вида cBehaviors = addgetcomponent
 
@@ -19,7 +14,7 @@ public class Readmy : MonoBehaviour
         cBehaviors.behaviors.Add(new Player_inputQ());
         cBehaviors.behaviors.Add(new Player_inputW());
         this.AddComponentBehaviors(cBehaviors);
-        ProcessorBehaviors.Inst.AddEntity(this);
+        ProcessorBehaviors.Inst.AddEntity(this); // todo в момент добавления к процессору первой сущности создается синглотон процессора
 		
 		
 добавить базу данных - обжект - черзе нее настраивать систему поведений		

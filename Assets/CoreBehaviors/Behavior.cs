@@ -84,7 +84,7 @@ public abstract class Behavior<T> : AbstractBehavior
         return true;
       }
       behaviorStep++;
-    } while (behaviorStep <= behaviours.Count - 1);
+    } while (behaviorStep < behaviours.Count);
     return false;
   }
 
