@@ -8,20 +8,13 @@ public class Readmy : MonoBehaviour
     
     /*todo
 
-убрать под капот добавление компонентов сущности и попадание поведений в процессор. вида cBehaviors = addgetcomponent
-
-        cBehaviors.test = 4;
-        cBehaviors.behaviors.Add(new Player_inputQ());
-        cBehaviors.behaviors.Add(new Player_inputW());
-        this.AddComponentBehaviors(cBehaviors);
-        ProcessorBehaviors.Inst.AddEntity(this); // todo в момент добавления к процессору первой сущности создается синглотон процессора
+дестроить дату в момент удаления сущности
 		
-		
-добавить базу данных - обжект - черзе нее настраивать систему поведений		
-		
+дату сделать для обьектов - классов. 
 		
 Добавить фильтры сущностей
 
+парсинг джейсона в дату - нужна общая система заполнения даты из джейсона
      
      */
     
@@ -29,12 +22,11 @@ public class Readmy : MonoBehaviour
     void Start()
     {
         player = new Player();
-        player.qq = 3;
+        player.Set(DataBase.Pawns.Gunner);
         
-        player.Setup(player);
-        
+        var speedWalk = player.DataMotion().speedWalk;
 
-        Debug.Log($" 222  {player.ComponentBehaviors().test} ||  {player.ComponentBehaviors().behaviors.Count} ");
+        Debug.Log($" 222  {player.ComponentBehaviors().test} ||  {player.ComponentBehaviors().behaviors.Count} || speedWalk {speedWalk} ");
         
     }
 

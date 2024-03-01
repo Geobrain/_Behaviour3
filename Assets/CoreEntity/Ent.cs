@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class Ent : Object
 {
-    public int Id { get; private set; }
-
     protected Ent()
     {
         Setup();
@@ -17,6 +15,7 @@ public abstract class Ent : Object
     {
         ProcessorBehaviors.Instance?.RemoveEntity(this);
         this.DisposeComponents();
+        this.RemoveData();
         Destroy(this);
     }
 }
