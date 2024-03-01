@@ -4,11 +4,9 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [System.Serializable]
-sealed class DataMotion
+sealed class PlayerDataBehaviors
 {
-    public float speedWalk;
-    public float speedRun;
-    public float speedRush;
+    public List<AbstractBehavior> behaviors = new();
 }
 
 #region HELPERS   
@@ -16,7 +14,7 @@ sealed class DataMotion
 static partial class DataHelper
 {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static DataMotion DataMotion(this Ent entity) => DataSource.Source[entity].Nodes[Data.Indexer<DataMotion>.Id] as DataMotion;
+    internal static PlayerDataBehaviors PlayerDataBehaviors(this Ent entity) => DataSource.Source[entity].Nodes[Data.Indexer<PlayerDataBehaviors>.Id] as PlayerDataBehaviors;
 }
 
 #endregion

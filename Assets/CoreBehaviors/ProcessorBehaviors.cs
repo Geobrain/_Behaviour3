@@ -12,6 +12,7 @@ public class ProcessorBehaviors : Singleton<ProcessorBehaviors>{
 
     public void AddEntity(Ent entity) {
         var cBehaviors = entity.ComponentBehaviors();
+        cBehaviors.behaviors = entity.PlayerDataBehaviors().behaviors;
         cBehaviors.activeBehavior = null;
 
         for (var i = 0; i < cBehaviors.behaviors.Count; i++) {

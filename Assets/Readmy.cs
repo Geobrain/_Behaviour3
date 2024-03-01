@@ -8,10 +8,7 @@ public class Readmy : MonoBehaviour
     
     /*todo
 
-дестроить дату в момент удаления сущности
-		
-дату сделать для обьектов - классов. 
-		
+
 Добавить фильтры сущностей
 
 парсинг джейсона в дату - нужна общая система заполнения даты из джейсона
@@ -22,7 +19,8 @@ public class Readmy : MonoBehaviour
     void Start()
     {
         player = new Player();
-        player.Set(DataBase.Pawns.Gunner);
+        player.Set(DataBase.Role.Gunner);
+        ProcessorBehaviors.Instance.AddEntity(player); 
         
         var speedWalk = player.DataMotion().speedWalk;
 

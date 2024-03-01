@@ -9,9 +9,9 @@ public class Player : Ent
     protected override void Setup() {
         cBehaviors = this.AddGetComponentBehaviors();
         cBehaviors.test = 4;
-        cBehaviors.behaviors.Add(new Player_inputQ());
+        /*cBehaviors.behaviors.Add(new Player_inputQ());
         cBehaviors.behaviors.Add(new Player_inputW());
-        ProcessorBehaviors.Instance.AddEntity(this); 
+        ProcessorBehaviors.Instance.AddEntity(this); */
 
         
         
