@@ -15,7 +15,7 @@ public partial class BehaviorName
   [FieldKey(categoryName = "Behaviors")] public const string Player_inputQ = "Player_inputQ";
 }
 
-[CreateAssetMenu(fileName = "Player_inputQ", menuName = "Game/Behaviors/Player_inputQ")]
+
 public class Player_inputQ : Behavior<Player_inputQ>, IOneStepBehavior
 {
   public Player_inputQ() : base(BehaviorName.Player_inputQ) { }

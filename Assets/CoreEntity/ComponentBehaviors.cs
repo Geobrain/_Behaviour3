@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 
 [Serializable]
-public sealed class ComponentBehaviors {
+public sealed class ComponentBehaviors : Component{
   [FormerlySerializedAs("www")] public int test;
 
   public List<AbstractBehavior> behaviors = new(); // список поведений
@@ -14,11 +15,14 @@ public sealed class ComponentBehaviors {
 
 #region HELPERS
 
-public static partial class Component {
+public static partial class ComponentHelper {
+  [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+  public static void CreateStorage() => StorageComponentBehaviors.Instance ??= new StorageComponentBehaviors();
+
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public static ComponentBehaviors AddGetComponentBehaviors(this Ent entity) {
     var component = new ComponentBehaviors();
-    StorageComponentBehaviors.AddComponent(() => StorageComponentBehaviors.Instance.Components.TryAdd(entity, component));
+    StorageComponentBehaviors.Instance.AddComponent(entity, component);
     return component;
   }
 
@@ -30,10 +34,8 @@ public static partial class Component {
 }
 
 
-sealed class StorageComponentBehaviors : ComponentStorage<ComponentBehaviors> {
-  [MethodImpl(MethodImplOptions.AggressiveInlining)]
-  public StorageComponentBehaviors() {
-  }
+public sealed class StorageComponentBehaviors : ComponentStorage<ComponentBehaviors> {
+  public override void AddComponent(Ent entity, Component component) => Instance.Components.TryAdd(entity, (ComponentBehaviors) component);
 
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
   public override void Dispose(Ent entity) {

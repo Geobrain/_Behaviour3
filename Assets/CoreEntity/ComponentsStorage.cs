@@ -1,6 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor;
+using UnityEngine;
+
+public class Component { }
+
+public abstract class ComponentStorage
+{
+  public abstract void Dispose(Ent entity);
+}
+
 
 public static class ComponentsStorage
 {
@@ -13,13 +23,8 @@ public static class ComponentsStorage
       storage.Dispose(entity);
     }
   }
-
 }
 
-public abstract class ComponentStorage
-{
-  public abstract void Dispose(Ent entity);
-}
 
 public abstract class ComponentStorage<T> : ComponentStorage
 {
@@ -35,11 +40,8 @@ public abstract class ComponentStorage<T> : ComponentStorage
     }
   }
 
-  public static void AddComponent(Action addComponent)
-  {
-    StorageComponentBehaviors.Instance ??= new StorageComponentBehaviors();
-    addComponent.Invoke();
-  }
+  public abstract void AddComponent(Ent entity, Component component);
+
 
   /*
   [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -49,5 +51,7 @@ public abstract class ComponentStorage<T> : ComponentStorage
       ? components[entityID]
       : default;
   }*/
-  
+
 }
+
+

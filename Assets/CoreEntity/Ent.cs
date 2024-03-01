@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Ent : Object
 {
+    public int Id { get; private set; }
+
     protected Ent()
     {
         Setup();

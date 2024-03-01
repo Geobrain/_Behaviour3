@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//[CreateAssetMenu(fileName = "Player_inputQ", menuName = "Game/Behaviors/Player_inputQ")]
+
 public partial class BehaviorName
 {
   [FieldKey(categoryName = "Behaviors")] public const string _None = "_None";
