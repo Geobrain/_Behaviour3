@@ -29,10 +29,12 @@ public class Readmy : MonoBehaviour
     void Start()
     {
         player = new Player();
+        player.qq = 3;
+        
+        player.Setup(player);
         
 
-        Debug.Log($" создан игрок. значение поля test  {player.ComponentBehaviors().test} ");
-
+        Debug.Log($" 222  {player.ComponentBehaviors().test} ||  {player.ComponentBehaviors().behaviors.Count} ");
         
     }
 
